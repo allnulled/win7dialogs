@@ -41,7 +41,7 @@ const aceptar = await window.win7dialogs.open({
 Un diálogo que pide nombre y contraseña.
 
 ```js
-const { nombre, contrasenya } = await window.win7dialogs.open({
+const { nombre, apellido } = await window.win7dialogs.open({
     title: "Diálogo de nombre",
     message: ""
     + "<div>"
@@ -60,7 +60,7 @@ const { nombre, contrasenya } = await window.win7dialogs.open({
     footer: "Un diálogo donde se pide el nombre"
 });
 console.log("Nombre: " + nombre);
-console.log("Contraseña: " + contrasenya);
+console.log("Apellido: " + apellido);
 ```
 
 El `message` se crea dentro de un `form`.
