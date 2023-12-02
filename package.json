@@ -1,12 +1,26 @@
 {
   "name": "win7dialogs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Diálogos con ventanas tipo Windows 7.",
   "main": "docs/lib/win7dialogs/win7dialogs.js",
   "scripts": {
     "start": "npx http-server -c-1 docs -o index.1.html"
   },
-  "keywords": ["win7", "dialogs"],
+  "keywords": [
+    "win7",
+    "dialogs"
+  ],
   "author": "allnulled",
-  "license": "WTFPL"
+  "license": "WTFPL",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allnulled/win7dialogs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/allnulled/win7dialogs/issues"
+  },
+  "homepage": "https://github.com/allnulled/win7dialogs#readme"
 }
