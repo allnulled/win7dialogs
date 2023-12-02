@@ -1,0 +1,12 @@
+{
+  "name": "win7dialogs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "docs/lib/win7dialogs/win7dialogs.js",
+  "scripts": {
+    "start": "npx http-server -c-1 docs -o index.1.html"
+  },
+  "keywords": ["win7", "dialogs"],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

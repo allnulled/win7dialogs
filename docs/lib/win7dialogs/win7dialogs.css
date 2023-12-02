@@ -1,0 +1,21 @@
+.win7-dialogs-port {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.win7-dialogs-port > table {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.win7-dialogs-port > table > tbody > tr > td {
+    vertical-align: middle;
+    padding: 12px;
+}
+.win7-dialogs-port > table > tbody > tr > td > .window > .window-body {
+    min-height: 100px;
+    overflow: scroll;
+}

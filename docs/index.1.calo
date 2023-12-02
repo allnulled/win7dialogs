@@ -1,0 +1,132 @@
+Ejecutable como documento HTML5
+    con autor allnulled
+    con nombre index
+    con versión 1
+<head>
+    <title>🌐 Win7Dialogs</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="lib/win7/win7.scoped.2.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/ui-script.css" />
+    <link rel="stylesheet" type="text/css" href="lib/win7dialogs/win7dialogs.css" />
+    <script src="lib/calo/calo.js"></script>
+    <script src="lib/ui-script/ui-script.js"></script>
+    <script src="lib/win7dialogs/win7dialogs.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <div class="win7dialogs"></div>
+</body>.
+
+### importo api nativa.
+
+asigno window.PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plantilla {
+  <div class="PaginaDeInicio Component">
+    <xtitle>Win7Dialogs</xtitle>
+    <xlayout>
+      <button v-on:click="abrir_dialogo_1">Ejemplo 1</button>
+      <button v-on:click="abrir_dialogo_2">Ejemplo 2</button>
+    </xlayout>
+  </div>
+} con lógica {
+  retorno {
+    propiedad props como {
+      propiedad root como {
+        propiedad type como Object.
+        propiedad required como true.
+      }.
+    }.
+    método data donde {
+      retorno {}.
+    }.
+    propiedad methods como {
+      método abrir_dialogo_1 donde {
+        hago this.root.$window.win7dialogs.open("<p>Un nuevo mensaje en un diálogo!</p><button>Aceptar</button>").
+      }.
+      método asíncrono abrir_dialogo_2 donde {
+        asigno window.process_form_2 como una función con (evento) donde {
+          creo nombre como evento.target.querySelector("input[name=nombre]").value.
+          creo contrasenya como evento.target.querySelector("input[name=contrasenya]").value.
+          hago window.alert("Te has logueado con " + nombre + " y " + contrasenya).
+          hago Win7Dialogs.close(evento).
+          retorno false.
+        }.
+        creo formulario como asíncronamente this.root.$window.win7dialogs.open(""
+        + "<div>"
+        + "  <div style='padding:8px;'>"
+        + "    <div>Usuario: </div>"
+        + "    <input style='width:100%;' type='text' name='nombre' placeholder='usuario' value='admin' />"
+        + "  </div>"
+        + "  <div style='padding:8px;'>"
+        + "    <div>Contraseña: </div>"
+        + "    <input style='width:100%;' type='password' name='contrasenya' placeholder='contraseña' value='admin' />"
+        + "  </div>"
+        + "  <div style='padding:8px; text-align:right;'>"
+        + "    <button>Entrar</button>"
+        + "  </div>"
+        + "</div>",
+        "Fake login").
+        desacoplo constantes [elemento_nombre, elemento_contrasenya] a partir de formulario.elements.
+        creo nombre como elemento_nombre.value.
+        creo contrasenya como elemento_contrasenya.value.
+        creo formulario2 como asíncronamente this.root.$window.win7dialogs.open(""
+        + "<div>"
+        + "  <div style='padding:8px;'>"
+        + "    <div>La ventana anterior nos ha proporcionado los datos. Ahora podemos reusarlos en otra ventana aparte.</div>"
+        + "  </div>"
+        + "  <div style='padding:8px;'>"
+        + "    <div>¿A que su usuario era " + (nombre textualizado) + " y su contraseña era " + (contrasenya textualizado) + "?</div>"
+        + "  </div>"
+        + "  <div style='padding:8px; text-align:right;'>"
+        + "    <button>Sí. Lo acepto.</button>"
+        + "  </div>"
+        + "</div>",
+        "Fake login continuation...").
+      }.
+    }.
+    propiedad watch como {}.
+    propiedad computed como {}.
+    método beforeCreate donde {}.
+    método created donde {}.
+    método beforeMount donde {}.
+    método mounted donde {}.
+    método beforeUpdate donde {}.
+    método updated donde {}.
+    método beforeUnmount donde {}.
+    método unmounted donde {}.
+    método activated donde {}.
+    método deactivated donde {}.
+  }.
+}.
+
+asigno window.App como una aplicación vue2 con nombre "App" con rutas [{
+  propiedad path como "/".
+  propiedad name como "PaginaDeInicio".
+  propiedad component como PaginaDeInicio.
+  propiedad props como {}.
+}] con traducciones {
+    propiedad es como {}.
+    propiedad en como {}.
+    propiedad ca como {}.
+} con plantilla {
+  <div class="App Component Castelog-app win7">
+    <router-view :root="this"></router-view>
+  </div>
+} con estilos {
+    html {}
+    body {}
+    .Component {}
+    .App {}
+} con lógica {
+  retorno {
+    método data donde {
+      retorno {}.
+    }.
+    propiedad methods como {}.
+    propiedad watch como {}.
+    método beforeMount donde {
+      asigno this.$window como window.
+    }.
+    método mounted donde {}.
+  }.
+} montada en "#app".
