@@ -20,7 +20,9 @@ window.PaginaDeInicio = Castelog.metodos.un_componente_vue2("PaginaDeInicio",
  + "    <xlayout>"
  + "      <button v-on:click=\"abrir_dialogo_1\">Ejemplo 1</button>"
  + "      <button v-on:click=\"abrir_dialogo_2\">Ejemplo 2</button>"
+ + "      <button v-on:click=\"abrir_dialogo_3\">Ejemplo 3</button>"
  + "    </xlayout>"
+ + "    <div>Documentation at <a href=\"https://github.com/allnulled/win7dialogs\">https://github.com/allnulled/win7dialogs</a></div>"
  + "  </div>",
   function(component) {return { props:{ root:{ type:Object,
 required:true
@@ -36,7 +38,16 @@ throw error;
 
 },
 methods:{ abrir_dialogo_1() {try {
-this.root.$window.win7dialogs.open( "<p>Un nuevo mensaje en un diálogo!</p><button>Aceptar</button>" );
+this.root.$window.win7dialogs.form( "<p>Un nuevo mensaje en un diálogo!</p><button>Aceptar</button>" );
+} catch(error) {
+console.log(error);
+throw error;
+}
+
+},
+async abrir_dialogo_3() {try {
+const confirmacion = (await this.root.$window.win7dialogs.confirm( "<p>¿Estás seguro de bla bla bla?</p>" ));
+const anuncio = (await this.root.$window.win7dialogs.inform( "<p>La confirmación terminó en " + confirmacion + "</p>" ));
 } catch(error) {
 console.log(error);
 throw error;
@@ -56,11 +67,11 @@ throw error;
 }
 
 };
-const formulario = (await this.root.$window.win7dialogs.open( "" + "<div>" + "  <div style='padding:8px;'>" + "    <div>Usuario: </div>" + "    <input style='width:100%;' type='text' name='nombre' placeholder='usuario' value='admin' />" + "  </div>" + "  <div style='padding:8px;'>" + "    <div>Contraseña: </div>" + "    <input style='width:100%;' type='password' name='contrasenya' placeholder='contraseña' value='admin' />" + "  </div>" + "  <div style='padding:8px; text-align:right;'>" + "    <button>Entrar</button>" + "  </div>" + "</div>",
+const formulario = (await this.root.$window.win7dialogs.form( "" + "<div>" + "  <div style='padding:8px;'>" + "    <div>Usuario: </div>" + "    <input style='width:100%;' type='text' name='nombre' placeholder='usuario' value='admin' />" + "  </div>" + "  <div style='padding:8px;'>" + "    <div>Contraseña: </div>" + "    <input style='width:100%;' type='password' name='contrasenya' placeholder='contraseña' value='admin' />" + "  </div>" + "  <div style='padding:8px; text-align:right;'>" + "    <button>Entrar</button>" + "  </div>" + "</div>",
 "Fake login" ));
 const { nombre, contrasenya
 } = formulario;
-const formulario2 = (await this.root.$window.win7dialogs.open( "" + "<div>" + "  <div style='padding:8px;'>" + "    <div>La ventana anterior nos ha proporcionado los datos. Ahora podemos reusarlos en otra ventana aparte.</div>" + "  </div>" + "  <div style='padding:8px;'>" + "    <div>¿A que su usuario era " + ( JSON.stringify(nombre, null, 2) ) + " y su contraseña era " + ( JSON.stringify(contrasenya, null, 2) ) + "?</div>" + "  </div>" + "  <div style='padding:8px; text-align:right;'>" + "    <button>Sí. Lo acepto.</button>" + "  </div>" + "</div>",
+const formulario2 = (await this.root.$window.win7dialogs.form( "" + "<div>" + "  <div style='padding:8px;'>" + "    <div>La ventana anterior nos ha proporcionado los datos. Ahora podemos reusarlos en otra ventana aparte.</div>" + "  </div>" + "  <div style='padding:8px;'>" + "    <div>¿A que su usuario era " + ( JSON.stringify(nombre, null, 2) ) + " y su contraseña era " + ( JSON.stringify(contrasenya, null, 2) ) + "?</div>" + "  </div>" + "  <div style='padding:8px; text-align:right;'>" + "    <button>Sí. Lo acepto.</button>" + "  </div>" + "</div>",
 "Fake login continuation..." ));
 } catch(error) {
 console.log(error);

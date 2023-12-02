@@ -26,7 +26,9 @@ asigno window.PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio"
     <xlayout>
       <button v-on:click="abrir_dialogo_1">Ejemplo 1</button>
       <button v-on:click="abrir_dialogo_2">Ejemplo 2</button>
+      <button v-on:click="abrir_dialogo_3">Ejemplo 3</button>
     </xlayout>
+    <div>Documentation at <a href="https://github.com/allnulled/win7dialogs">https://github.com/allnulled/win7dialogs</a></div>
   </div>
 } con lógica {
   retorno {
@@ -41,7 +43,11 @@ asigno window.PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio"
     }.
     propiedad methods como {
       método abrir_dialogo_1 donde {
-        hago this.root.$window.win7dialogs.open("<p>Un nuevo mensaje en un diálogo!</p><button>Aceptar</button>").
+        hago this.root.$window.win7dialogs.form("<p>Un nuevo mensaje en un diálogo!</p><button>Aceptar</button>").
+      }.
+      método asíncrono abrir_dialogo_3 donde {
+        creo confirmacion como asíncronamente this.root.$window.win7dialogs.confirm("<p>¿Estás seguro de bla bla bla?</p>").
+        creo anuncio como asíncronamente this.root.$window.win7dialogs.inform("<p>La confirmación terminó en " + confirmacion + "</p>").
       }.
       método asíncrono abrir_dialogo_2 donde {
         asigno window.process_form_2 como una función con (evento) donde {
@@ -51,7 +57,7 @@ asigno window.PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio"
           hago Win7Dialogs.resolve(evento).
           retorno false.
         }.
-        creo formulario como asíncronamente this.root.$window.win7dialogs.open(""
+        creo formulario como asíncronamente this.root.$window.win7dialogs.form(""
         + "<div>"
         + "  <div style='padding:8px;'>"
         + "    <div>Usuario: </div>"
@@ -67,7 +73,7 @@ asigno window.PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio"
         + "</div>",
         "Fake login").
         desacoplo constantes { nombre, contrasenya } a partir de formulario.
-        creo formulario2 como asíncronamente this.root.$window.win7dialogs.open(""
+        creo formulario2 como asíncronamente this.root.$window.win7dialogs.form(""
         + "<div>"
         + "  <div style='padding:8px;'>"
         + "    <div>La ventana anterior nos ha proporcionado los datos. Ahora podemos reusarlos en otra ventana aparte.</div>"

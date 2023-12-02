@@ -2,6 +2,12 @@
 
 Window dialogs with Windows 7 styles.
 
+## Online demo
+
+Go to online demonstration now at:
+
+ - [https://allnulled.github.io/win7dialogs](https://allnulled.github.io/win7dialogs)
+
 ## Installation
 
 First, clone the repository from git.
@@ -35,36 +41,47 @@ The library does not use jQuery or anything else.
 A dialog that accepts:
 
 ```js
-const accept = await window.win7dialogs.open({
-    title: "Diálogo de aceptación",
-    message: "<button>Aceptar</button>",
-    footer: "Un diálogo normal"
+const accept = await window.win7dialogs.inform({
+    title: "Acceptance",
+    message: "<p>You can only accept</p>",
+    footer: "A normal dialog"
 });
+```
+
+A dialog that asks for confirmation:
+
+```js
+const confirmation = await window.win7dialogs.confirm({
+    title: "Confirmation",
+    message: "<p>Accept or reject</p>",
+    footer: "A dialog of confirmation"
+});
+console.log("Confirmed: " + confirmation);
 ```
 
 A dialog that asks for name and surname:
 
 ```js
-const { nombre, apellido } = await window.win7dialogs.open({
+const { name, surname } = await window.win7dialogs.form({
     title: "Diálogo de nombre",
     message: ""
     + "<div>"
     + "  <div>"
-    + "    <div>Pon tu nombre.</div>"
-    + "    <input type='text' name='nombre' placeholder='Nombre aquí' style='width:100%;' />"
+    + "    <div>Write your name.</div>"
+    + "    <input type='text' name='name' placeholder='Nombre aquí' style='width:100%;' />"
     + "  </div>"
     + "  <div>"
-    + "    <div>Pon tu apellido.</div>"
-    + "    <input type='text' name='apellido' placeholder='Apellido aquí' style='width:100%;' />"
+    + "    <div>Write your surname.</div>"
+    + "    <input type='text' name='surname' placeholder='Apellido aquí' style='width:100%;' />"
     + "  </div>"
     + "  <div>"
-    + "    <button>Aceptar</button>"
+    + "    <button>Accept</button>"
     + "  </div>"
     + "</div>",
     footer: "Un diálogo donde se pide el nombre"
 });
-console.log("Nombre: " + nombre);
-console.log("Apellido: " + apellido);
+console.log("Name: " + name);
+console.log("Surname: " + surname);
 ```
 
 The `message` is built inside a `<form>`.

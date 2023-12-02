@@ -4,6 +4,8 @@
     "description": "Diálogos con ventanas tipo Windows 7.",
     "main": "docs/lib/win7dialogs/win7dialogs.js",
     "scripts": {
+        "build": "npm run build-ui",
+        "build-ui": "cp docs/index.1.html docs/index.html",
         "start": "npx http-server -c-1 docs -o index.1.html"
     },
     "keywords": [
