@@ -1,44 +1,48 @@
 # win7dialogs
 
-Diálogos con ventanas tipo Windows 7.
+Window dialogs with Windows 7 styles.
 
-## Instalación
+## Installation
 
-Primero, clonar el repositorio de git.
+First, clone the repository from git.
 
-Segundo, importar en el proyecto estos 2 ficheros:
+```sh
+git clone https://github.com/allnulled/win7dialogs.git .
+```
+
+Second, import these 2 files into your project:
 
  - [`docs/lib/win7dialogs/win7dialogs.js`](docs/lib/win7dialogs/win7dialogs.js)
  - [`docs/lib/win7dialogs/win7dialogs.css`](docs/lib/win7dialogs/win7dialogs.css)
 
-Tercero, cerciorarse que se tiene importado el css del proyecto [`win7.css`](https://khang-nd.github.io/7.css/) en el HTML.
+Third, ensure the css from the project [`win7.css`](https://khang-nd.github.io/7.css/) is imported from your HTML.
 
 ```html
-<link href="lib/win7/win7.scoped.css" type="text/css" />
+<link href="docs/lib/win7/win7.scoped.css" type="text/css" />
 ```
 
-Cuarto y último, incorporar en el HTML estas 2 librerías:
+Fourth and last, import these 2 libraries from your HTML:
 
 ```html
-<link href="lib/win7dialogs/win7dialogs.css" type="text/css" />
-<script src="lib/win7dialogs/win7dialogs.js"></script>
+<link href="docs/lib/win7dialogs/win7dialogs.css" type="text/css" />
+<script src="docs/lib/win7dialogs/win7dialogs.js"></script>
 ```
 
-La librería solo usa JavaScript así que no necesitas ni jQuery ni nada extra.
+The library does not use jQuery or anything else.
 
-## Uso
+## Usage
 
-Un diálogo que acepta:
+A dialog that accepts:
 
 ```js
-const aceptar = await window.win7dialogs.open({
+const accept = await window.win7dialogs.open({
     title: "Diálogo de aceptación",
     message: "<button>Aceptar</button>",
     footer: "Un diálogo normal"
 });
 ```
 
-Un diálogo que pide nombre y contraseña.
+A dialog that asks for name and surname:
 
 ```js
 const { nombre, apellido } = await window.win7dialogs.open({
@@ -63,14 +67,16 @@ console.log("Nombre: " + nombre);
 console.log("Apellido: " + apellido);
 ```
 
-El `message` se crea dentro de un `form`.
+The `message` is built inside a `<form>`.
 
-Así, cuando clicas a un botón, por defecto se envía ese `form`, cuyo evento `submit` está capturado.
+This way, when you click on a button without `onclick` event, by default the `form` is submited.
 
-Éste, lo que hará será resolver con `Win7Dialogs.resolve` el diálogo.
+That `onsubmit` event is captured.
 
-Para resolverse, lo que se hace es que se extraen todos los elementos del formulario que tengan un `name` y se usa ese `name` como propiedad en el parámetro de salida.
+That event is going to *resolve* the dialog with `Win7Dialogs.resolve` static method.
 
-Así, todas las variables del formulario aparecen en el objeto de salida.
+To resolve it, all the form elements are extracted and mapped to their `value` property, or `files` property in case of `<input type="file" />`.
 
-En el caso de los `input type="file"` se devuelve un array con los `files` de ese `input`.
+The property `name` of the inputs is used as label in the output object.
+
+This way, all the form variables appear in the output object.
