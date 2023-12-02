@@ -6,7 +6,7 @@ Ejecutable como documento HTML5
     <title>🌐 Win7Dialogs</title>
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="lib/win7/win7.scoped.2.css" />
+    <link rel="stylesheet" type="text/css" href="lib/win7/win7.scoped.css" />
     <link rel="stylesheet" type="text/css" href="lib/ui-script/ui-script.css" />
     <link rel="stylesheet" type="text/css" href="lib/win7dialogs/win7dialogs.css" />
     <script src="lib/calo/calo.js"></script>
@@ -48,7 +48,7 @@ asigno window.PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio"
           creo nombre como evento.target.querySelector("input[name=nombre]").value.
           creo contrasenya como evento.target.querySelector("input[name=contrasenya]").value.
           hago window.alert("Te has logueado con " + nombre + " y " + contrasenya).
-          hago Win7Dialogs.close(evento).
+          hago Win7Dialogs.resolve(evento).
           retorno false.
         }.
         creo formulario como asíncronamente this.root.$window.win7dialogs.open(""
@@ -66,9 +66,7 @@ asigno window.PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio"
         + "  </div>"
         + "</div>",
         "Fake login").
-        desacoplo constantes [elemento_nombre, elemento_contrasenya] a partir de formulario.elements.
-        creo nombre como elemento_nombre.value.
-        creo contrasenya como elemento_contrasenya.value.
+        desacoplo constantes { nombre, contrasenya } a partir de formulario.
         creo formulario2 como asíncronamente this.root.$window.win7dialogs.open(""
         + "<div>"
         + "  <div style='padding:8px;'>"

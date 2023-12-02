@@ -4,24 +4,35 @@ const Win7Dialogs = class {
         const dialogs_port = form_element.closest(".win7-dialogs-port");
         const uuid = dialogs_port.getAttribute("data-uuid");
         const { promise, ok, fail } = this.ports[uuid];
+        const input_elements = form_element.elements;
         dialogs_port.parentElement.remove();
-        ok(form_element);
+        const output = {};
+        for (let index = 0; index < input_elements.length; index++) {
+            const input_element = input_elements[index];
+            const name = input_element.name;
+            if (input_element.type === "file") {
+                output[name] = input_element.files;
+            } else {
+                output[name] = input_element.value;
+            }
+        }
+        ok(output);
         return false;
     }
-    static noop () {}
+    static noop() { }
     constructor() {
 
     }
     generate_random_token(len = 10, alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") {
         let out = "";
-        while(out.length < len) {
+        while (out.length < len) {
             out += alphabet[Math.floor(Math.random() * alphabet.length)];
         }
         return out;
     }
     open(html_arg, title_arg = "Message", footer_arg = false) {
         let inner_html, title, footer;
-        if(typeof html_arg === "object") {
+        if (typeof html_arg === "object") {
             const { message, title: title_2, footer: footer_2 } = html_arg;
             inner_html = message;
             title = title_2;
@@ -57,7 +68,7 @@ const Win7Dialogs = class {
         html += inner_html;
         html += "      </form>\n";
         html += "    </div>\n";
-        if(footer) {
+        if (footer) {
             html += "      <div class='status-bar'>\n";
             html += "        <div class='status-bar-field'>\n";
             html += footer;

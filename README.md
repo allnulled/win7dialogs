@@ -24,6 +24,8 @@ Cuarto y último, incorporar en el HTML estas 2 librerías:
 <script src="lib/win7dialogs/win7dialogs.js"></script>
 ```
 
+La librería solo usa JavaScript así que no necesitas ni jQuery ni nada extra.
+
 ## Uso
 
 Un diálogo que acepta:
@@ -39,7 +41,7 @@ const aceptar = await window.win7dialogs.open({
 Un diálogo que pide nombre y contraseña.
 
 ```js
-const formulario_de_nombre = await window.win7dialogs.open({
+const { nombre, contrasenya } = await window.win7dialogs.open({
     title: "Diálogo de nombre",
     message: ""
     + "<div>"
@@ -57,9 +59,18 @@ const formulario_de_nombre = await window.win7dialogs.open({
     + "</div>",
     footer: "Un diálogo donde se pide el nombre"
 });
-const nombre = formulario_de_nombre.elements[0].value;
-const contrasenya = formulario_de_nombre.elements[1].value;
 console.log("Nombre: " + nombre);
 console.log("Contraseña: " + contrasenya);
-
 ```
+
+El `message` se crea dentro de un `form`.
+
+Así, cuando clicas a un botón, por defecto se envía ese `form`, cuyo evento `submit` está capturado.
+
+Éste, lo que hará será resolver con `Win7Dialogs.resolve` el diálogo.
+
+Para resolverse, lo que se hace es que se extraen todos los elementos del formulario que tengan un `name` y se usa ese `name` como propiedad en el parámetro de salida.
+
+Así, todas las variables del formulario aparecen en el objeto de salida.
+
+En el caso de los `input type="file"` se devuelve un array con los `files` de ese `input`.
